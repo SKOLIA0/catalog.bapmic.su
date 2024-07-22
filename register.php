@@ -1,5 +1,5 @@
 <?php
-// register.php
+// не размещать на сайте
 require 'config.php';
 require 'Database.php';
 
