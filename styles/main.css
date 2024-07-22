@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.video-container {
+    position: absolute;
+    top: 130px; /* Отступ от верхней части страницы (70px шапка + 60px поиск) */
+    width: 100%;
+    height: calc(100vh - 130px); /* Высота видео на весь экран за вычетом высоты шапки и строки поиска */
+    overflow: hidden;
+    z-index: -1;
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 1; /* Чтобы контейнер был поверх видео */
+    position: relative;
+}
+
+
+.no-results-message {
+    color: white; /* Change to any color that contrasts with your background */
+    font-size: 18px; /* Adjust the size as needed */
+    text-align: center; /* Center the text */
+    margin-top: 20px; /* Add some space above the message */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Media queries for different screen sizes */
+
+/* For small devices (mobile phones) */
+@media only screen and (max-width: 480px) {
+    #background-video {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+/* For larger mobile devices */
+@media only screen and (max-width: 767px) and (min-width: 481px) {
+    #background-video {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+/* For tablets */
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+    #background-video {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+/* For small laptops */
+@media only screen and (max-width: 1366px) and (min-width: 1025px) {
+    #background-video {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+/* For larger laptops and desktops */
+@media only screen and (min-width: 1367px) {
+    #background-video {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
