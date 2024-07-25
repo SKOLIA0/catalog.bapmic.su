@@ -4,20 +4,26 @@ require 'Database.php';
 require 'Product.php';
 require 'Catalog.php';
 require 'BapmicData.php';
-require 'Photo.php';
+
 
 $config = require 'config.php';
 $db = new Database($config);
 $productModel = new Product($db);
 $catalogModel = new Catalog($db);
 $bapmicDataModel = new BapmicData($db);
-$photoModel = new Photo($db);
+
 
 $products = null;
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $articles = explode(',', $_POST['articles']);
-    $articles = array_map('trim', $articles);
-    $products = $productModel->getProducts($articles);
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['articles'])) {
+    // Убираем пробелы и нежелательные символы
+    $articlesInput = $_POST['articles'];
+    $cleanedArticles = preg_replace('/[^a-zA-Z0-9]/', '', $articlesInput);
+
+    // Оставляем только первый очищенный артикул
+    if (!empty($cleanedArticles)) {
+        $finalArticle = $cleanedArticles;
+        $products = $productModel->getProducts([$finalArticle]);
+    }
 }
 ?>
 
